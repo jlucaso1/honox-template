@@ -1,13 +1,22 @@
 // vite.config.ts
 import honox from "honox/vite";
+import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "vite";
 
 export default defineConfig(({ mode }) => {
   if (mode === "client") {
     return {
-      plugins: [honox()],
+      plugins: [
+        honox({
+          client: {
+            input: ["/app/app.css"],
+          },
+        }),
+        tailwindcss(),
+      ],
       build: {
         minify: true,
+        cssMinify: true,
       },
     };
   } else {
@@ -16,6 +25,7 @@ export default defineConfig(({ mode }) => {
         ssr: true,
         emptyOutDir: false,
         minify: true,
+        cssMinify: true,
         rollupOptions: {
           external: [/^node:/],
           input: "./entry.ts",
@@ -24,7 +34,14 @@ export default defineConfig(({ mode }) => {
           },
         },
       },
-      plugins: [honox()],
+      plugins: [
+        honox({
+          client: {
+            input: ["/app/app.css"],
+          },
+        }),
+        tailwindcss(),
+      ],
     };
   }
 });

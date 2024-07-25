@@ -6,23 +6,30 @@
 		"build": "bun build:client && bun build:server",
 		"build:client": "vite build --mode client",
 		"build:server": "vite build",
-		"preview": "bun --bun run dist/server.js",
+		"preview": "bun run --cwd dist server.js",
 		"typecheck": "tsc --noEmit",
 		"format": "bunx biome format --write .",
 		"lint": "bunx biome lint --write ."
 	},
 	"private": true,
 	"dependencies": {
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.1.1",
 		"hono": "^4.5.1",
-		"honox": "^0.1.23"
+		"honox": "^0.1.23",
+		"lucide-react": "^0.414.0",
+		"tailwind-merge": "^2.4.0",
+		"tailwindcss-animate": "^1.0.7"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "1.8.3",
 		"@hono/vite-dev-server": "^0.13.1",
 		"@types/bun": "^1.1.6",
+		"@types/react": "^18.3.3",
 		"autoprefixer": "^10.4.19",
 		"postcss": "^8.4.40",
 		"tailwindcss": "^3.4.6",
 		"vite": "^5.3.4"
-	}
+	},
+	"trustedDependencies": ["@biomejs/biome"]
 }
